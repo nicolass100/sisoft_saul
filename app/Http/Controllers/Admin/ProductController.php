@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    // Mostrar listado de productos (admin)
+    // Mostrar listado de productos
     public function index()
     {
         $productos = Product::all();
@@ -22,7 +22,7 @@ class ProductController extends Controller
         return view('admin.productos.create');
     }
 
-    // Guardar producto
+    // Guardar producto nuevo
     public function store(Request $request)
     {
         $request->validate([
@@ -32,11 +32,19 @@ class ProductController extends Controller
             'stock' => 'required|integer|min:0',
             'descripcion' => 'nullable|string',
             'imagen' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'imagen_2' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'imagen_3' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'imagen_4' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        $imagenPath = null;
-        if ($request->hasFile('imagen')) {
-            $imagenPath = $request->file('imagen')->store('productos', 'public');
+        // Guardar las rutas de imágenes
+        $paths = [];
+        foreach (['imagen', 'imagen_2', 'imagen_3', 'imagen_4'] as $campo) {
+            if ($request->hasFile($campo)) {
+                $paths[$campo] = $request->file($campo)->store('productos', 'public');
+            } else {
+                $paths[$campo] = null;
+            }
         }
 
         Product::create([
@@ -45,11 +53,13 @@ class ProductController extends Controller
             'precio' => $request->precio,
             'stock' => $request->stock,
             'descripcion' => $request->descripcion,
-            'imagen' => $imagenPath,
+            'imagen' => $paths['imagen'],
+            'imagen_2' => $paths['imagen_2'],
+            'imagen_3' => $paths['imagen_3'],
+            'imagen_4' => $paths['imagen_4'],
         ]);
 
-        return redirect()->route('admin.productos.index')
-            ->with('success', '✅ Producto creado correctamente.');
+        return redirect()->route('admin.productos.index')->with('success', '✅ Producto creado correctamente.');
     }
 
     // Mostrar formulario de edición
@@ -71,27 +81,33 @@ class ProductController extends Controller
             'stock' => 'required|integer|min:0',
             'descripcion' => 'nullable|string',
             'imagen' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'imagen_2' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'imagen_3' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'imagen_4' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        $imagenPath = $producto->imagen;
-        if ($request->hasFile('imagen')) {
-            if ($producto->imagen && Storage::disk('public')->exists($producto->imagen)) {
-                Storage::disk('public')->delete($producto->imagen);
-            }
-            $imagenPath = $request->file('imagen')->store('productos', 'public');
-        }
-
-        $producto->update([
+        $data = [
             'nombre' => $request->nombre,
             'sku' => $request->sku,
             'precio' => $request->precio,
             'stock' => $request->stock,
             'descripcion' => $request->descripcion,
-            'imagen' => $imagenPath,
-        ]);
+        ];
 
-        return redirect()->route('admin.productos.index')
-            ->with('success', '✏️ Producto actualizado correctamente.');
+        foreach (['imagen', 'imagen_2', 'imagen_3', 'imagen_4'] as $campo) {
+            if ($request->hasFile($campo)) {
+                // Eliminar imagen anterior si existía
+                if ($producto->$campo && Storage::disk('public')->exists($producto->$campo)) {
+                    Storage::disk('public')->delete($producto->$campo);
+                }
+                // Guardar nueva imagen
+                $data[$campo] = $request->file($campo)->store('productos', 'public');
+            }
+        }
+
+        $producto->update($data);
+
+        return redirect()->route('admin.productos.index')->with('success', '✏️ Producto actualizado correctamente.');
     }
 
     // Eliminar producto
@@ -99,13 +115,14 @@ class ProductController extends Controller
     {
         $producto = Product::findOrFail($id);
 
-        if ($producto->imagen && Storage::disk('public')->exists($producto->imagen)) {
-            Storage::disk('public')->delete($producto->imagen);
+        foreach (['imagen', 'imagen_2', 'imagen_3', 'imagen_4'] as $campo) {
+            if ($producto->$campo && Storage::disk('public')->exists($producto->$campo)) {
+                Storage::disk('public')->delete($producto->$campo);
+            }
         }
 
         $producto->delete();
 
-        return redirect()->route('admin.productos.index')
-            ->with('success', '🗑️ Producto eliminado correctamente.');
+        return redirect()->route('admin.productos.index')->with('success', '🗑️ Producto eliminado correctamente.');
     }
 }

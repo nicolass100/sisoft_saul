@@ -19,21 +19,9 @@
 
     <!-- SLIDE 0: BIENVENIDA -->
     <div class="carousel-item active">
-      <div class="d-flex align-items-center justify-content-center text-center bg-gradient position-relative" 
-           style="height: 480px; background: linear-gradient(135deg, #002B5B, #005EB8); color: white;">
-        <div class="container">
-          <h1 class="display-5 fw-bold mb-3 animate__animated animate__fadeInDown">Bienvenido a <span class="text-warning">SISOFT_SAUL 🚀</span></h1>
-          <p class="lead mb-4 animate__animated animate__fadeInUp">Explora nuestro catálogo de productos y encuentra lo que necesitas.</p>
-          <a href="/productos" class="btn btn-warning fw-bold px-4 py-2 shadow-sm">Ver catálogo</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Banner 1 -->
-    <div class="carousel-item">
-      <img src="{{ asset('images/firecuda1tb.jpg') }}" class="d-block w-100" alt="Laptops de alto rendimiento">
+      <img src="{{ asset('images/firecuda1tb.jpg') }}" class="d-block w-100 carousel-img" alt="Laptops de alto rendimiento">
       <div class="carousel-caption d-none d-md-block">
-        <h2 class="fw-bold text-shadow">💻 Laptops de Alto Rendimiento</h2>
+        <h2 class="fw-bold text-shadow">Laptops de Alto Rendimiento</h2>
         <p>Potencia, diseño y durabilidad en un solo equipo.</p>
         <a href="{{ url('/productos?q=laptops') }}" class="btn btn-primary px-4">Ver más</a>
       </div>
@@ -41,9 +29,9 @@
 
     <!-- Banner 2 -->
     <div class="carousel-item">
-      <img src="{{ asset('images/firecuda-1tb.jpg') }}" class="d-block w-100" alt="Impresoras Profesionales">
+      <img src="{{ asset('images/firecuda-1tb.jpg') }}" class="d-block w-100 carousel-img" alt="Impresoras Profesionales">
       <div class="carousel-caption d-none d-md-block">
-        <h2 class="fw-bold text-shadow">🖨️ Impresoras Profesionales</h2>
+        <h2 class="fw-bold text-shadow">Impresoras Profesionales</h2>
         <p>Imprime más, gasta menos. Alta productividad para tu oficina.</p>
         <a href="{{ url('/productos?q=impresoras') }}" class="btn btn-warning px-4">Explorar</a>
       </div>
@@ -51,9 +39,9 @@
 
     <!-- Banner 3 -->
     <div class="carousel-item">
-      <img src="{{ asset('images/banner3.jpg') }}" class="d-block w-100" alt="Zona Gamer">
+      <img src="{{ asset('images/Zona Gamer.webp') }}" class="d-block w-100 carousel-img" alt="Zona Gamer">
       <div class="carousel-caption d-none d-md-block">
-        <h2 class="fw-bold text-shadow">🎮 Zona Gamer</h2>
+        <h2 class="fw-bold text-shadow">Zona Gamer</h2>
         <p>Equipos con potencia extrema y estética única.</p>
         <a href="{{ url('/productos?q=gamer') }}" class="btn btn-danger px-4">Ver equipos</a>
       </div>
@@ -61,9 +49,9 @@
 
     <!-- Banner 4 -->
     <div class="carousel-item">
-      <img src="{{ asset('images/banner4.jpg') }}" class="d-block w-100" alt="Monitores HD">
+      <img src="{{ asset('images/Monitores Ultra HD.jpg') }}" class="d-block w-100 carousel-img" alt="Monitores HD">
       <div class="carousel-caption d-none d-md-block">
-        <h2 class="fw-bold text-shadow">📺 Monitores Ultra HD</h2>
+        <h2 class="fw-bold text-shadow">Monitores Ultra HD</h2>
         <p>Resolución perfecta para diseñadores y gamers.</p>
         <a href="{{ url('/productos?q=monitores') }}" class="btn btn-info px-4">Ver catálogo</a>
       </div>
@@ -125,7 +113,7 @@
             <div class="col-md-4">
                 <a href="{{ url('/productos?q=hogar') }}" class="text-decoration-none text-white">
                     <div class="card border-0 shadow-sm position-relative overflow-hidden">
-                        <img src="{{ asset('images/hogar.jpg') }}" class="card-img" alt="Hogar">
+                        <img src="{{ asset('images/Hogar.jpg') }}" class="card-img product-img" alt="Hogar">
                         <div class="card-img-overlay d-flex flex-column justify-content-end p-4"
                              style="background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);">
                             <h4 class="fw-bold mb-0">Hogar</h4>
@@ -138,7 +126,7 @@
             <div class="col-md-4">
                 <a href="{{ url('/productos?q=empresa') }}" class="text-decoration-none text-white">
                     <div class="card border-0 shadow-sm position-relative overflow-hidden">
-                        <img src="{{ asset('images/empresa.jpg') }}" class="card-img" alt="Empresas">
+                        <img src="{{ asset('images/Empresas.jpg') }}" class="card-img product-img" alt="Empresas">
                         <div class="card-img-overlay d-flex flex-column justify-content-end p-4"
                              style="background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);">
                             <h4 class="fw-bold mb-0">Empresas</h4>
@@ -151,7 +139,7 @@
             <div class="col-md-4">
                 <a href="{{ url('/productos?q=gamer') }}" class="text-decoration-none text-white">
                     <div class="card border-0 shadow-sm position-relative overflow-hidden">
-                        <img src="{{ asset('images/gamer.jpg') }}" class="card-img" alt="Gamer">
+                        <img src="{{ asset('images/Gamer.jpg') }}" class="card-img product-img" alt="Gamer">
                         <div class="card-img-overlay d-flex flex-column justify-content-end p-4"
                              style="background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);">
                             <h4 class="fw-bold mb-0">Gamer</h4>
@@ -178,84 +166,83 @@
 }
 </style>
 
-<section class="py-5">
+<section class="py-5 bg-light">
   <div class="container">
-    <h2 class="fw-bold mb-4">Cámaras de Seguridad</h2>
-    <div class="row align-items-center">
+    <h2 class="fw-bold mb-4 text-dark">
+      <i class="fa fa-video text-primary me-2"></i> Cámaras de Seguridad
+    </h2>
 
-      <!-- Imagen lateral izquierda -->
-      <div class="col-md-3">
-        <img src="{{ asset('images/banner_camaras.jpg') }}" 
-             alt="Cámaras de Seguridad" 
-             class="img-fluid rounded shadow-sm">
+    <div class="row align-items-stretch">
+      <!-- Imagen lateral -->
+      <div class="col-lg-3 mb-4 mb-lg-0 d-flex">
+        <div class="card shadow-sm border-0 w-100">
+          <img src="{{ asset('images/banner_camaras.webp') }}" 
+               alt="Cámaras de Seguridad"
+               class="img-fluid rounded-3 w-100 h-100 object-fit-cover banner-lateral">
+        </div>
       </div>
 
-      <!-- Carrusel de productos -->
-      <div class="col-md-9">
-        <div id="carouselCamaras" class="carousel slide" data-bs-ride="carousel">
+      <!-- Carrusel -->
+      <div class="col-lg-9 position-relative">
+        <div id="carouselCamaras" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
           <div class="carousel-inner">
 
-            <!-- Grupo 1 -->
-            <div class="carousel-item active">
-              <div class="row g-3">
-                @foreach ([
-                  ['img' => 'images/camara_ip1080p.jpg', 'nombre' => 'Cámara IP 1080p Full HD', 'precio' => 149.00, 'id' => 501],
-                  ['img' => 'images/camara_ptz_exterior.jpg', 'nombre' => 'Cámara PTZ Exterior 360°', 'precio' => 189.00, 'id' => 502],
-                  ['img' => 'images/kit_dvr_2cam.jpg', 'nombre' => 'Kit DVR + 2 Cámaras HD', 'precio' => 499.00, 'id' => 503],
-                  ['img' => 'images/mini_wifi.jpg', 'nombre' => 'Mini Cámara WiFi Nocturna', 'precio' => 129.00, 'id' => 504],
-                ] as $producto)
-                  <div class="col-md-3 col-6">
-                    <div class="card h-100 text-center border-0 shadow-sm">
-                      <img src="{{ asset($producto['img']) }}" 
-                           class="card-img-top" 
-                           alt="{{ $producto['nombre'] }}">
-                      <div class="card-body">
-                        <h6 class="card-title fw-bold">{{ $producto['nombre'] }}</h6>
-                        <p class="text-success mb-1 fw-bold">S/ {{ number_format($producto['precio'], 2) }}</p>
-                        <a href="{{ route('productos.show', $producto['id']) }}" class="btn btn-primary btn-sm">
-                          <i class="fa fa-eye"></i> Ver detalles
+            @foreach([
+              [
+                ['img'=>'images/camara_ip1080p.webp','nombre'=>'Cámara IP 1080p Full HD','precio'=>149.00,'id'=>501],
+                ['img'=>'images/camara_ptz_exterior.webp','nombre'=>'Cámara PTZ Exterior 360°','precio'=>189.00,'id'=>502],
+                ['img'=>'images/kit_dvr_2cam.webp','nombre'=>'Kit DVR + 2 Cámaras HD','precio'=>499.00,'id'=>503],
+                ['img'=>'images/mini_wifi.webp','nombre'=>'Mini Cámara WiFi Nocturna','precio'=>129.00,'id'=>504],
+              ],
+              [
+                ['img'=>'images/camara_solar.webp','nombre'=>'Cámara Solar HD Inteligente','precio'=>259.00,'id'=>505],
+                ['img'=>'images/camara_domo_ir.jpg','nombre'=>'Cámara Domo IR Interior','precio'=>169.00,'id'=>506],
+                ['img'=>'images/camara_ezviz.png','nombre'=>'Cámara Ezviz Smart Detection','precio'=>229.00,'id'=>507],
+                ['img'=>'images/camara_ip_noche.webp','nombre'=>'Cámara IP Nocturna 2MP','precio'=>199.00,'id'=>508],
+              ]
+            ] as $grupoIndex => $grupo)
+              <div class="carousel-item {{ $grupoIndex === 0 ? 'active' : '' }}">
+                <div class="row g-4">
+                  @foreach($grupo as $producto)
+                    <div class="col-md-3 col-6 d-flex">
+                      <div class="card flex-fill text-center border-0 shadow-sm product-card">
+                        <!-- Imagen clickeable -->
+                        <a href="{{ route('productos.show', $producto['id']) }}" class="image-link">
+                          <img src="{{ asset($producto['img']) }}" 
+                               alt="{{ $producto['nombre'] }}" 
+                               class="card-img-top product-img">
                         </a>
-                      </div>
-                    </div>
-                  </div>
-                @endforeach
-              </div>
-            </div>
 
-            <!-- Grupo 2 -->
-            <div class="carousel-item">
-              <div class="row g-3">
-                @foreach ([
-                  ['img' => 'images/camara_solar.jpg', 'nombre' => 'Cámara Solar HD Inteligente', 'precio' => 259.00, 'id' => 505],
-                  ['img' => 'images/camara_domo_ir.jpg', 'nombre' => 'Cámara Domo IR Interior', 'precio' => 169.00, 'id' => 506],
-                  ['img' => 'images/camara_ezviz.jpg', 'nombre' => 'Cámara Ezviz Smart Detection', 'precio' => 229.00, 'id' => 507],
-                  ['img' => 'images/camara_ip_noche.jpg', 'nombre' => 'Cámara IP Nocturna 2MP', 'precio' => 199.00, 'id' => 508],
-                ] as $producto)
-                  <div class="col-md-3 col-6">
-                    <div class="card h-100 text-center border-0 shadow-sm">
-                      <img src="{{ asset($producto['img']) }}" 
-                           class="card-img-top" 
-                           alt="{{ $producto['nombre'] }}">
-                      <div class="card-body">
-                        <h6 class="card-title fw-bold">{{ $producto['nombre'] }}</h6>
-                        <p class="text-success mb-1 fw-bold">S/ {{ number_format($producto['precio'], 2) }}</p>
-                        <a href="{{ route('productos.show', $producto['id']) }}" class="btn btn-primary btn-sm">
-                          <i class="fa fa-eye"></i> Ver detalles
-                        </a>
+                        <div class="card-body d-flex flex-column justify-content-between">
+                          <div>
+                            <h6 class="fw-bold text-dark">{{ $producto['nombre'] }}</h6>
+                            <p class="text-success fw-bold fs-6 mb-3">S/ {{ number_format($producto['precio'], 2) }}</p>
+                          </div>
+                          <!-- Botón amarillo -->
+                          <form action="{{ route('cart.add', $producto['id']) }}" method="POST" class="mt-auto">
+                            @csrf
+                            <button type="submit" class="btn btn-warning btn-sm w-100 fw-semibold shadow-sm text-dark">
+                              <i class="fa fa-cart-plus me-1"></i> Añadir al carrito
+                            </button>
+                          </form>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                @endforeach
+                  @endforeach
+                </div>
               </div>
-            </div>
+            @endforeach
+
           </div>
+        </div>
 
-          <!-- Controles -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselCamaras" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <!-- Controles externos -->
+        <div class="carousel-controls d-flex justify-content-between">
+          <button class="btn btn-dark btn-sm rounded-circle" type="button" data-bs-target="#carouselCamaras" data-bs-slide="prev">
+            <i class="fa fa-chevron-left"></i>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselCamaras" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <button class="btn btn-dark btn-sm rounded-circle" type="button" data-bs-target="#carouselCamaras" data-bs-slide="next">
+            <i class="fa fa-chevron-right"></i>
           </button>
         </div>
       </div>
@@ -263,6 +250,81 @@
   </div>
 </section>
 
+@push('scripts')
+<style>
+  .banner-lateral {
+    object-fit: cover;
+    height: 100%;
+    border-radius: 12px;
+  }
+
+  .product-card {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  }
+
+  .product-img {
+    height: 200px;
+    object-fit: contain;
+    background: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    transition: transform 0.3s ease;
+  }
+
+  .image-link:hover .product-img {
+    transform: scale(1.03);
+  }
+
+  .product-card h6 {
+    min-height: 40px;
+  }
+
+  .carousel-controls {
+    position: absolute;
+    top: 50%;
+    left: -50px;
+    right: -50px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .carousel-controls button {
+    pointer-events: auto;
+    z-index: 10;
+  }
+
+  @media (max-width: 992px) {
+    .carousel-controls { left: -15px; right: -15px; }
+  }
+
+  @media (max-width: 768px) {
+    .product-img { height: 160px; }
+  }
+</style>
+
+<script>
+  // ✅ Permitir clic en imagen sin que el carrusel lo bloquee
+  document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.querySelector('#carouselCamaras');
+    if (carousel) {
+      carousel.querySelectorAll('a.image-link').forEach(link => {
+        link.addEventListener('click', e => {
+          e.stopPropagation(); // Evita que Bootstrap lo trate como un "swipe"
+        });
+      });
+    }
+  });
+</script>
+@endpush
 
 <section class="py-5">
   <div class="container">
@@ -270,12 +332,11 @@
     <div class="row align-items-center">
       
       <!-- Imagen lateral izquierda -->
-      <div class="col-md-3">
-        <img src="{{ asset('images/banner_memorias.jpg') }}" 
-             alt="Memorias RAM y USB" 
-             class="img-fluid rounded shadow-sm">
-      </div>
-
+     <div class="col-md-3">
+     <img src="{{ asset('images/banner_memorias.jpg') }}" 
+       alt="Memorias RAM y USB" 
+       class="img-fluid rounded shadow-sm product-img">
+        </div>
       <!-- Carrusel -->
       <div class="col-md-9">
         <div id="carouselMemorias" class="carousel slide" data-bs-ride="carousel">
@@ -285,14 +346,14 @@
             <div class="carousel-item active">
               <div class="row g-3">
                 @foreach ([
-                  ['img' => 'images/ram_adata8g1866.jpg', 'nombre' => 'Memoria RAM ADATA XPG DDR3 8GB/1866', 'precio' => 270.27, 'id' => 341],
+                  ['img' => 'images/ram_adata8g1866.png', 'nombre' => 'Memoria RAM ADATA XPG DDR3 8GB/1866', 'precio' => 270.27, 'id' => 341],
                   ['img' => 'images/ram_hx316c10f4az.jpg', 'nombre' => 'Memoria RAM HyperX Fury DDR3 4GB/1600', 'precio' => 171.60, 'id' => 342],
                   ['img' => 'images/ram_hx318c10f8baz.jpg', 'nombre' => 'Memoria RAM HyperX Fury DDR3 8GB/1866', 'precio' => 296.10, 'id' => 344],
                   ['img' => 'images/ram_crucial4g1600.jpg', 'nombre' => 'Memoria SODIMM Crucial DDR3 4GB/1600', 'precio' => 158.73, 'id' => 347],
                 ] as $producto)
                   <div class="col-md-3 col-6">
                     <div class="card h-100 text-center border-0 shadow-sm">
-                      <img src="{{ asset($producto['img']) }}" class="card-img-top" alt="{{ $producto['nombre'] }}">
+                      <img src="{{ asset($producto['img']) }}" class="card-img-top product-img" alt="{{ $producto['nombre'] }}">
                       <div class="card-body">
                         <h6 class="card-title fw-bold">{{ $producto['nombre'] }}</h6>
                         <p class="text-success mb-1 fw-bold">S/ {{ number_format($producto['precio'], 2) }}</p>
@@ -310,9 +371,9 @@
             <div class="carousel-item">
               <div class="row g-3">
                 @foreach ([
-                  ['img' => 'images/ram_hx318c10f8ne.jpg', 'nombre' => 'Memoria RAM HyperX Fury DDR3 8GB/1866 (HX318C10F8NE)', 'precio' => 304.59, 'id' => 346],
+                  ['img' => 'images/ram_hx318c10f8ne.webp', 'nombre' => 'Memoria RAM HyperX Fury DDR3 8GB/1866 (HX318C10F8NE)', 'precio' => 304.59, 'id' => 346],
                   ['img' => 'images/ram_king32g.jpg', 'nombre' => 'Memoria USB Kingston 32GB DTSE9G2', 'precio' => 51.91, 'id' => 340],
-                  ['img' => 'images/ram_hx316c10f4ne.jpg', 'nombre' => 'Memoria RAM HyperX Fury DDR3 4GB/1600 (HX316C10F4NE)', 'precio' => 171.60, 'id' => 343],
+                  ['img' => 'images/ram_hx316c10f4ne.webp', 'nombre' => 'Memoria RAM HyperX Fury DDR3 4GB/1600 (HX316C10F4NE)', 'precio' => 171.60, 'id' => 343],
                   ['img' => 'images/ram_hx318c10f8baz2.jpg', 'nombre' => 'Memoria RAM HyperX Fury DDR3 8GB/1866 (HX318C10F8BAZ)', 'precio' => 296.10, 'id' => 345],
                 ] as $producto)
                   <div class="col-md-3 col-6">
@@ -348,14 +409,14 @@
 
 <section class="py-5">
   <div class="container">
-    <h2 class="fw-bold mb-4">Impresoras Epson</h2>
+    <h2 class="fw-bold mb-4">Mini Impresoras Epson</h2>
     <div class="row align-items-center">
       
       <!-- Imagen lateral izquierda -->
-      <div class="col-md-3">
-        <img src="{{ asset('images/banner_impresoras.jpg') }}" 
-             alt="Impresoras Epson" 
-             class="img-fluid rounded shadow-sm">
+     <div class="col-md-3">
+     <img src="{{ asset('images/banner_impresoras.webp') }}" 
+       alt="Impresoras Epson" 
+       class="img-fluid rounded shadow-sm product-img">
       </div>
 
       <!-- Carrusel -->
@@ -369,12 +430,12 @@
                 @foreach ([
                   ['img' => 'images/epson_tmu220a.jpg', 'nombre' => 'Impresora Mini Matricial Epson TM-U220A (C31C515652)', 'precio' => 1514.37, 'id' => 267],
                   ['img' => 'images/epson_tmu220af.jpg', 'nombre' => 'Impresora Mini Matricial Epson TM-U220AF-153 (C31C514653)', 'precio' => 1317.03, 'id' => 269],
-                  ['img' => 'images/epson_t20ii.jpg', 'nombre' => 'Impresora Mini Térmica Epson TM-T20II (C31CD52062)', 'precio' => 900.90, 'id' => 274],
-                  ['img' => 'images/epson_t20ii_061.jpg', 'nombre' => 'Impresora Mini Térmica Epson TM-T20II-061 (C31CD52061)', 'precio' => 948.93, 'id' => 275],
+                  ['img' => 'images/epson_t20ii.webp', 'nombre' => 'Impresora Mini Térmica Epson TM-T20II (C31CD52062)', 'precio' => 900.90, 'id' => 274],
+                  ['img' => 'images/epson_t20ii_061.png', 'nombre' => 'Impresora Mini Térmica Epson TM-T20II-061 (C31CD52061)', 'precio' => 948.93, 'id' => 275],
                 ] as $producto)
                   <div class="col-md-3 col-6">
                     <div class="card h-100 text-center border-0 shadow-sm">
-                      <img src="{{ asset($producto['img']) }}" class="card-img-top" alt="{{ $producto['nombre'] }}">
+                      <img src="{{ asset($producto['img']) }}" class="card-img-top product-img" alt="{{ $producto['nombre'] }}">
                       <div class="card-body">
                         <h6 class="card-title fw-bold">{{ $producto['nombre'] }}</h6>
                         <p class="text-success mb-1 fw-bold">S/ {{ number_format($producto['precio'], 2) }}</p>
@@ -430,7 +491,7 @@
 
 <section class="py-5 bg-light">
   <div class="container">
-    <h2 class="fw-bold text-center mb-4 text-warning">🖱️ Lo Mejor en Mouse</h2>
+    <h2 class="fw-bold text-center mb-4 text-warning">Lo Mejor en Mouse</h2>
 
     <!-- Botones de pestañas -->
     <div class="text-center mb-4">
@@ -447,7 +508,7 @@
           <div class="row g-3">
             <div class="col-md-3 col-6">
               <div class="card h-100 text-center border-0 shadow-sm">
-                <img src="{{ asset('images/mouse1.jpg') }}" class="card-img-top" alt="Mouse básico">
+                <img src="{{ asset('images/Mouse Óptico Genius.jpg') }}" class="card-img-top" alt="Mouse básico">
                 <div class="card-body">
                   <h6 class="card-title fw-bold">Mouse Óptico Genius</h6>
                   <p class="text-success fw-bold">S/ 29.90</p>
@@ -456,7 +517,7 @@
             </div>
             <div class="col-md-3 col-6">
               <div class="card h-100 text-center border-0 shadow-sm">
-                <img src="{{ asset('images/mouse2.jpg') }}" class="card-img-top" alt="Mouse USB Logitech">
+                <img src="{{ asset('images/Mouse Logitech M90 USB.webp') }}" class="card-img-top" alt="Mouse USB Logitech">
                 <div class="card-body">
                   <h6 class="card-title fw-bold">Mouse Logitech M90 USB</h6>
                   <p class="text-success fw-bold">S/ 35.00</p>
@@ -465,7 +526,7 @@
             </div>
             <div class="col-md-3 col-6">
               <div class="card h-100 text-center border-0 shadow-sm">
-                <img src="{{ asset('images/mouse3.jpg') }}" class="card-img-top" alt="Mouse inalámbrico HP">
+                <img src="{{ asset('images/Mouse HP Inalámbrico.jpg') }}" class="card-img-top" alt="Mouse inalámbrico HP">
                 <div class="card-body">
                   <h6 class="card-title fw-bold">Mouse HP Inalámbrico</h6>
                   <p class="text-success fw-bold">S/ 49.00</p>
@@ -474,7 +535,7 @@
             </div>
             <div class="col-md-3 col-6">
               <div class="card h-100 text-center border-0 shadow-sm">
-                <img src="{{ asset('images/mouse4.jpg') }}" class="card-img-top" alt="Mouse ergonómico Dell">
+                <img src="{{ asset('images/Mouse Dell Ergonómico.jpg') }}" class="card-img-top" alt="Mouse ergonómico Dell">
                 <div class="card-body">
                   <h6 class="card-title fw-bold">Mouse Dell Ergonómico</h6>
                   <p class="text-success fw-bold">S/ 39.00</p>
@@ -489,7 +550,7 @@
           <div class="row g-3">
             <div class="col-md-3 col-6">
               <div class="card h-100 text-center border-0 shadow-sm">
-                <img src="{{ asset('images/mouse5.jpg') }}" class="card-img-top" alt="Mouse inalámbrico Genius">
+                <img src="{{ asset('images/Mouse Genius DX-120.webp') }}" class="card-img-top" alt="Mouse inalámbrico Genius">
                 <div class="card-body">
                   <h6 class="card-title fw-bold">Mouse Genius DX-120</h6>
                   <p class="text-success fw-bold">S/ 42.00</p>
@@ -498,7 +559,7 @@
             </div>
             <div class="col-md-3 col-6">
               <div class="card h-100 text-center border-0 shadow-sm">
-                <img src="{{ asset('images/mouse6.jpg') }}" class="card-img-top" alt="Mouse óptico Microsoft">
+                <img src="{{ asset('images/Mouse Microsoft Basic.jpg') }}" class="card-img-top" alt="Mouse óptico Microsoft">
                 <div class="card-body">
                   <h6 class="card-title fw-bold">Mouse Microsoft Basic</h6>
                   <p class="text-success fw-bold">S/ 39.90</p>
@@ -507,7 +568,7 @@
             </div>
             <div class="col-md-3 col-6">
               <div class="card h-100 text-center border-0 shadow-sm">
-                <img src="{{ asset('images/mouse7.jpg') }}" class="card-img-top" alt="Mouse inalámbrico Lenovo">
+                <img src="{{ asset('images/Mouse Lenovo Silent.jpg') }}" class="card-img-top" alt="Mouse inalámbrico Lenovo">
                 <div class="card-body">
                   <h6 class="card-title fw-bold">Mouse Lenovo Silent</h6>
                   <p class="text-success fw-bold">S/ 55.00</p>
@@ -516,7 +577,7 @@
             </div>
             <div class="col-md-3 col-6">
               <div class="card h-100 text-center border-0 shadow-sm">
-                <img src="{{ asset('images/mouse8.jpg') }}" class="card-img-top" alt="Mouse óptico Teros">
+                <img src="{{ asset('images/Mouse Teros Básico.jpg') }}" class="card-img-top" alt="Mouse óptico Teros">
                 <div class="card-body">
                   <h6 class="card-title fw-bold">Mouse Teros Básico</h6>
                   <p class="text-success fw-bold">S/ 25.00</p>
@@ -545,7 +606,7 @@
           <div class="row g-3">
             <div class="col-md-3 col-6">
               <div class="card h-100 text-center border-0 shadow-sm">
-                <img src="{{ asset('images/mousegamer1.jpg') }}" class="card-img-top" alt="Mouse Gamer RGB">
+                <img src="{{ asset('images/Mouse Gamer RGB Teros X15.webp') }}" class="card-img-top" alt="Mouse Gamer RGB">
                 <div class="card-body">
                   <h6 class="card-title fw-bold">Mouse Gamer RGB Teros X15</h6>
                   <p class="text-success fw-bold">S/ 69.00</p>
@@ -554,7 +615,7 @@
             </div>
             <div class="col-md-3 col-6">
               <div class="card h-100 text-center border-0 shadow-sm">
-                <img src="{{ asset('images/mousegamer2.jpg') }}" class="card-img-top" alt="Mouse Gamer Redragon">
+                <img src="{{ asset('images/Mouse Redragon Cobra.webp') }}" class="card-img-top" alt="Mouse Gamer Redragon">
                 <div class="card-body">
                   <h6 class="card-title fw-bold">Mouse Redragon Cobra</h6>
                   <p class="text-success fw-bold">S/ 119.00</p>
@@ -563,7 +624,7 @@
             </div>
             <div class="col-md-3 col-6">
               <div class="card h-100 text-center border-0 shadow-sm">
-                <img src="{{ asset('images/mousegamer3.jpg') }}" class="card-img-top" alt="Mouse Logitech G203">
+                <img src="{{ asset('images/Mouse Logitech G203 Lightsync.webp') }}" class="card-img-top" alt="Mouse Logitech G203">
                 <div class="card-body">
                   <h6 class="card-title fw-bold">Mouse Logitech G203 Lightsync</h6>
                   <p class="text-success fw-bold">S/ 149.00</p>
@@ -572,7 +633,7 @@
             </div>
             <div class="col-md-3 col-6">
               <div class="card h-100 text-center border-0 shadow-sm">
-                <img src="{{ asset('images/mousegamer4.jpg') }}" class="card-img-top" alt="Mouse Razer DeathAdder">
+                <img src="{{ asset('images/Razer DeathAdder V2.webp') }}" class="card-img-top" alt="Mouse Razer DeathAdder">
                 <div class="card-body">
                   <h6 class="card-title fw-bold">Razer DeathAdder V2</h6>
                   <p class="text-success fw-bold">S/ 229.00</p>
@@ -587,7 +648,7 @@
           <div class="row g-3">
             <div class="col-md-3 col-6">
               <div class="card h-100 text-center border-0 shadow-sm">
-                <img src="{{ asset('images/mousegamer5.jpg') }}" class="card-img-top" alt="Mouse Gamer HyperX">
+                <img src="{{ asset('images/Mouse HyperX Pulsefire.webp') }}" class="card-img-top" alt="Mouse Gamer HyperX">
                 <div class="card-body">
                   <h6 class="card-title fw-bold">Mouse HyperX Pulsefire</h6>
                   <p class="text-success fw-bold">S/ 189.00</p>
@@ -596,7 +657,7 @@
             </div>
             <div class="col-md-3 col-6">
               <div class="card h-100 text-center border-0 shadow-sm">
-                <img src="{{ asset('images/mousegamer6.jpg') }}" class="card-img-top" alt="Mouse Gamer Corsair">
+                <img src="{{ asset('images/Mouse Corsair Harpoon RGB.jpg') }}" class="card-img-top" alt="Mouse Gamer Corsair">
                 <div class="card-body">
                   <h6 class="card-title fw-bold">Mouse Corsair Harpoon RGB</h6>
                   <p class="text-success fw-bold">S/ 159.00</p>
@@ -605,7 +666,7 @@
             </div>
             <div class="col-md-3 col-6">
               <div class="card h-100 text-center border-0 shadow-sm">
-                <img src="{{ asset('images/mousegamer7.jpg') }}" class="card-img-top" alt="Mouse Gamer Asus">
+                <img src="{{ asset('images/Asus TUF Gaming M3.jpg') }}" class="card-img-top" alt="Mouse Gamer Asus">
                 <div class="card-body">
                   <h6 class="card-title fw-bold">Asus TUF Gaming M3</h6>
                   <p class="text-success fw-bold">S/ 139.00</p>
@@ -614,7 +675,7 @@
             </div>
             <div class="col-md-3 col-6">
               <div class="card h-100 text-center border-0 shadow-sm">
-                <img src="{{ asset('images/mousegamer8.jpg') }}" class="card-img-top" alt="Mouse Gamer MSI Clutch">
+                <img src="{{ asset('images/MSI Clutch GM08.webp') }}" class="card-img-top" alt="Mouse Gamer MSI Clutch">
                 <div class="card-body">
                   <h6 class="card-title fw-bold">MSI Clutch GM08</h6>
                   <p class="text-success fw-bold">S/ 179.00</p>
@@ -668,7 +729,7 @@ function mostrarCarrusel(tipo) {
       
       <!-- Imagen principal izquierda -->
       <div class="col-md-3">
-        <img src="{{ asset('images/banner_sistemas_continuos.jpg') }}" alt="Sistemas Continuos" class="img-fluid rounded shadow-sm">
+        <img src="{{ asset('images/banner_sistemas_continuos.jpg') }}" alt="Sistemas Continuos" class="img-fluid rounded shadow-sm product-img">
       </div>
 
       <!-- Carrusel -->
@@ -680,14 +741,14 @@ function mostrarCarrusel(tipo) {
             <div class="carousel-item active">
               <div class="row g-3">
                 @foreach ([
-                  ['img' => 'images/tanque_ciss_100ml.jpg', 'nombre' => 'Tanque CISS 100ml Acrílico', 'precio' => 65.00, 'id' => 1],
-                  ['img' => 'images/cartuchos_acrilico.jpg', 'nombre' => 'Cartuchos Acrílicos sin Chip', 'precio' => 49.00, 'id' => 2],
-                  ['img' => 'images/mangueras_ciss.jpg', 'nombre' => 'Mangueras CISS 4 Colores', 'precio' => 25.00, 'id' => 3],
+                  ['img' => 'images/tanque_ciss_100ml.avif', 'nombre' => 'Tanque CISS 100ml Acrílico', 'precio' => 65.00, 'id' => 1],
+                  ['img' => 'images/cartuchos_acrilico.webp', 'nombre' => 'Cartuchos Acrílicos sin Chip', 'precio' => 49.00, 'id' => 2],
+                  ['img' => 'images/mangueras_ciss.avif', 'nombre' => 'Mangueras CISS 4 Colores', 'precio' => 25.00, 'id' => 3],
                   ['img' => 'images/kit_tintas_gospel.jpg', 'nombre' => 'Kit Tintas Gospel Premium 4x100ml', 'precio' => 95.00, 'id' => 4],
                 ] as $producto)
                   <div class="col-md-3 col-6">
                     <div class="card h-100 text-center border-0 shadow-sm">
-                      <img src="{{ asset($producto['img']) }}" class="card-img-top" alt="{{ $producto['nombre'] }}">
+                      <img src="{{ asset($producto['img']) }}" class="card-img-top product-img" alt="{{ $producto['nombre'] }}">
                       <div class="card-body">
                         <h6 class="card-title fw-bold">{{ $producto['nombre'] }}</h6>
                         <p class="text-success mb-1 fw-bold">S/ {{ number_format($producto['precio'], 2) }}</p>
@@ -749,7 +810,7 @@ function mostrarCarrusel(tipo) {
 
       <!-- Imagen principal izquierda -->
       <div class="col-md-3">
-        <img src="{{ asset('images/banner_placas_hp.jpg') }}" alt="Placas Liberadas HP" class="img-fluid rounded shadow-sm">
+        <img src="{{ asset('images/banner_placas_hp.jpg') }}" alt="Placas Liberadas HP" class="img-fluid rounded shadow-sm product-img">
       </div>
 
       <!-- Carrusel -->
@@ -761,14 +822,14 @@ function mostrarCarrusel(tipo) {
             <div class="carousel-item active">
               <div class="row g-3">
                 @foreach ([
-                  ['img' => 'images/placa_hp_8210.jpg', 'nombre' => 'Placa HP 8210 Liberada', 'precio' => 280.00, 'id' => 9],
-                  ['img' => 'images/placa_hp_7740.jpg', 'nombre' => 'Placa HP 7740 Liberada', 'precio' => 300.00, 'id' => 10],
-                  ['img' => 'images/placa_hp_9010.jpg', 'nombre' => 'Placa HP 9010 Liberada', 'precio' => 310.00, 'id' => 11],
-                  ['img' => 'images/placa_hp_9020.jpg', 'nombre' => 'Placa HP 9020 Liberada', 'precio' => 320.00, 'id' => 12],
+                  ['img' => 'images/placa_hp_8210.webp', 'nombre' => 'Placa HP 8210 Liberada', 'precio' => 280.00, 'id' => 9],
+                  ['img' => 'images/placa_hp_7740.webp', 'nombre' => 'Placa HP 7740 Liberada', 'precio' => 300.00, 'id' => 10],
+                  ['img' => 'images/placa_hp_9010.avif', 'nombre' => 'Placa HP 9010 Liberada', 'precio' => 310.00, 'id' => 11],
+                  ['img' => 'images/placa_hp_9020.webp', 'nombre' => 'Placa HP 9020 Liberada', 'precio' => 320.00, 'id' => 12],
                 ] as $producto)
                   <div class="col-md-3 col-6">
                     <div class="card h-100 text-center border-0 shadow-sm">
-                      <img src="{{ asset($producto['img']) }}" class="card-img-top" alt="{{ $producto['nombre'] }}">
+                      <img src="{{ asset($producto['img']) }}" class="card-img-top product-img" alt="{{ $producto['nombre'] }}">
                       <div class="card-body">
                         <h6 class="card-title fw-bold">{{ $producto['nombre'] }}</h6>
                         <p class="text-success mb-1 fw-bold">S/ {{ number_format($producto['precio'], 2) }}</p>
@@ -786,9 +847,9 @@ function mostrarCarrusel(tipo) {
             <div class="carousel-item">
               <div class="row g-3">
                 @foreach ([
-                  ['img' => 'images/placa_hp_7720.jpg', 'nombre' => 'Placa HP 7720 Liberada', 'precio' => 290.00, 'id' => 13],
-                  ['img' => 'images/placa_hp_8710.jpg', 'nombre' => 'Placa HP 8710 Liberada', 'precio' => 310.00, 'id' => 14],
-                  ['img' => 'images/placa_hp_477.jpg', 'nombre' => 'Placa HP PageWide 477', 'precio' => 350.00, 'id' => 15],
+                  ['img' => 'images/placa_hp_7720.avif', 'nombre' => 'Placa HP 7720 Liberada', 'precio' => 290.00, 'id' => 13],
+                  ['img' => 'images/placa_hp_8710.webp', 'nombre' => 'Placa HP 8710 Liberada', 'precio' => 310.00, 'id' => 14],
+                  ['img' => 'images/placa_hp_477.avif', 'nombre' => 'Placa HP PageWide 477', 'precio' => 350.00, 'id' => 15],
                   ['img' => 'images/placa_hp_577.jpg', 'nombre' => 'Placa HP PageWide 577', 'precio' => 360.00, 'id' => 16],
                 ] as $producto)
                   <div class="col-md-3 col-6">
@@ -828,9 +889,9 @@ function mostrarCarrusel(tipo) {
 
       <!-- Imagen lateral izquierda -->
       <div class="col-md-3">
-        <img src="{{ asset('images/banner_auriculares.jpg') }}" 
+        <img src="{{ asset('images/banner_auriculares.webp') }}" 
              alt="Auriculares Gaming" 
-             class="img-fluid rounded shadow-sm">
+             class="img-fluid rounded shadow-sm product-img">
       </div>
 
       <!-- Carrusel -->
@@ -843,15 +904,15 @@ function mostrarCarrusel(tipo) {
               <div class="row g-3">
                 @foreach ([
                   ['img' => 'images/steelseries_350.jpg', 'nombre' => 'Auricular SteelSeries Siberia 350 (HS-00006)', 'precio' => 394.68, 'id' => 423],
-                  ['img' => 'images/steelseries_650.jpg', 'nombre' => 'Auricular SteelSeries Siberia 650 (HS-00007)', 'precio' => 733.59, 'id' => 424],
+                  ['img' => 'images/steelseries_650.webp', 'nombre' => 'Auricular SteelSeries Siberia 650 (HS-00007)', 'precio' => 733.59, 'id' => 424],
                   ['img' => 'images/steelseries_800.jpg', 'nombre' => 'Auricular SteelSeries Siberia 800 (HS-00007)', 'precio' => 1111.11, 'id' => 425],
                   ['img' => 'images/steelseries_elite.jpg', 'nombre' => 'Auricular SteelSeries Siberia Elite (5152)', 'precio' => 304.59, 'id' => 426],
                 ] as $producto)
                   <div class="col-md-3 col-6">
                     <div class="card h-100 text-center border-0 shadow-sm">
-                      <img src="{{ asset($producto['img']) }}" 
-                           class="card-img-top" 
-                           alt="{{ $producto['nombre'] }}">
+          <img src="{{ asset($producto['img']) }}" 
+            class="card-img-top product-img" 
+            alt="{{ $producto['nombre'] }}">
                       <div class="card-body">
                         <h6 class="card-title fw-bold">{{ $producto['nombre'] }}</h6>
                         <p class="text-success mb-1 fw-bold">S/ {{ number_format($producto['precio'], 2) }}</p>

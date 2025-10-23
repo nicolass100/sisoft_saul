@@ -1,10 +1,14 @@
 <header class="bg-white shadow-sm">
     <div class="container d-flex align-items-center justify-content-between py-3">
 
-        {{-- Logo --}}
-        <div>
-            <img src="{{ asset('images/logo.png') }}" alt="Logo SISOFT" style="max-height: 70px;">
-        </div>
+        {{-- Logo con enlace a la página principal --}}
+<div>
+    <a href="{{ route('home') }}" class="d-inline-block">
+        <img src="{{ asset('images/logo.jpeg') }}" 
+             alt="Logo SISOFT" 
+             style="max-height: 70px; cursor: pointer;">
+    </a>
+</div>
 
         <!-- Botón Menú -->
 <button class="btn btn-primary mx-3 d-flex align-items-center"
@@ -29,7 +33,7 @@
       <div class="accordion-item border-0">
         <h2 class="accordion-header">
           <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#laptopsCollapse">
-            💻 Laptops & Notebooks
+           Laptops & Notebooks
           </button>
         </h2>
         <div id="laptopsCollapse" class="accordion-collapse collapse" data-bs-parent="#menuAccordion">
@@ -45,7 +49,7 @@
       <div class="accordion-item border-0">
         <h2 class="accordion-header">
           <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#pcCollapse">
-            🖥️ Computadoras
+          Computadoras
           </button>
         </h2>
         <div id="pcCollapse" class="accordion-collapse collapse" data-bs-parent="#menuAccordion">
@@ -60,7 +64,7 @@
       <div class="accordion-item border-0">
         <h2 class="accordion-header">
           <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#gamerCollapse">
-            🎮 Gamer
+          Gamer
           </button>
         </h2>
         <div id="gamerCollapse" class="accordion-collapse collapse" data-bs-parent="#menuAccordion">
@@ -75,7 +79,7 @@
       <div class="accordion-item border-0">
         <h2 class="accordion-header">
           <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#printerCollapse">
-            🖨️ Impresoras
+          Impresoras
           </button>
         </h2>
         <div id="printerCollapse" class="accordion-collapse collapse" data-bs-parent="#menuAccordion">
@@ -91,7 +95,7 @@
       <div class="accordion-item border-0">
         <h2 class="accordion-header">
           <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#businessCollapse">
-            🏢 Venta a Empresas
+          Venta a Empresas
           </button>
         </h2>
         <div id="businessCollapse" class="accordion-collapse collapse" data-bs-parent="#menuAccordion">
@@ -142,7 +146,7 @@
                 </a>
             @else
                 <div class="d-flex align-items-center gap-2">
-                    <span class="fw-bold text-primary">👋 Hola, {{ Auth::user()->name }}</span>
+                    <span class="fw-bold text-primary">Hola, {{ Auth::user()->name }}</span>
 
                     {{-- Enlace al panel admin --}}
                     <a href="{{ route('admin.productos.index') }}" class="btn btn-outline-dark btn-sm">

@@ -53,7 +53,7 @@
 
 <body>
     <img src="{{ asset('images/logo.png') }}" alt="Logo SISOFT" class="logo">
-    <h1 class="fw-bold mb-3">🚀 Bienvenido a <span class="text-warning">SISOFT_SAUL</span></h1>
+    <h1 class="fw-bold mb-3">Bienvenido a <span class="text-warning">SISOFT_SAUL</span></h1>
     <p class="lead mb-4">Explora nuestro catálogo de productos y descubre las mejores soluciones tecnológicas.</p>
 
     <a href="{{ route('home') }}" class="btn btn-warning btn-lg">

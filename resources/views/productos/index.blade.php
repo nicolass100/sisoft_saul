@@ -55,15 +55,15 @@
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                 <div class="card h-100 shadow-sm border-0">
                     @if($producto->imagen)
-                        <img src="{{ asset('storage/'.$producto->imagen) }}" 
-                             class="card-img-top rounded-top" 
-                             alt="{{ $producto->nombre }}" 
-                             style="height:220px; object-fit:cover;">
-                    @else
-                        <img src="https://via.placeholder.com/300x220?text=Sin+Imagen" 
-                             class="card-img-top rounded-top" 
-                             alt="Sin imagen">
-                    @endif
+    <img src="{{ asset($producto->imagen) }}" 
+         class="card-img-top rounded-top" 
+         alt="{{ $producto->nombre }}" 
+         style="height:220px; object-fit:cover;">
+@else
+    <img src="{{ asset('images/no-image.png') }}" 
+         class="card-img-top rounded-top" 
+         alt="Sin imagen">
+@endif
 
                     <div class="card-body d-flex flex-column text-center">
                         <h6 class="card-title fw-bold mb-2" style="font-size: 0.95rem;">

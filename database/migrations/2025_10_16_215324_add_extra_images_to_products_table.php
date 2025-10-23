@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
 {
     Schema::table('products', function (Blueprint $table) {
-        $table->string('marca')->nullable()->after('descripcion');
-        $table->string('modelo')->nullable()->after('marca');
-        $table->string('categoria')->nullable()->after('modelo');
+        $table->string('imagen_2')->nullable()->after('imagen');
+        $table->string('imagen_3')->nullable()->after('imagen_2');
+        $table->string('imagen_4')->nullable()->after('imagen_3');
     });
 }
 
@@ -28,7 +28,7 @@ return new class extends Migration
     public function down()
 {
     Schema::table('products', function (Blueprint $table) {
-        $table->dropColumn(['marca', 'modelo', 'categoria']);
+        $table->dropColumn(['imagen_2', 'imagen_3', 'imagen_4']);
     });
 }
 };

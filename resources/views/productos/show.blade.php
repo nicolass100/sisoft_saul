@@ -3,241 +3,193 @@
 @section('title', $producto->nombre)
 
 @section('content')
-<div class="container py-5">
+@php
+  $imgs = collect([
+    $producto->imagen,
+    $producto->imagen_2,
+    $producto->imagen_3,
+    $producto->imagen_4,
+  ])->filter()->values();
+@endphp
+
+<div class="container my-5">
   <div class="row g-4">
-    <!-- Miniaturas -->
-    <div class="col-md-2 d-flex flex-column align-items-center">
-      @php
-        $imagenes = [
-          asset('images/'.$producto->imagen),
-          asset('images/'.$producto->imagen),
-          asset('images/'.$producto->imagen),
-          asset('images/'.$producto->imagen),
-        ];
-      @endphp
-      @foreach($imagenes as $index => $img)
-        <img src="{{ $img }}" 
-             class="img-thumbnail mb-2 thumb-img" 
-             data-img="{{ $img }}" 
-             alt="Vista lateral {{ $index + 1 }}">
-      @endforeach
-    </div>
 
-    <!-- Imagen principal + formas de pago -->
-    <div class="col-md-5 text-center">
-      <img id="mainImage" src="{{ asset('images/'.$producto->imagen) }}" 
-           class="img-fluid rounded shadow-sm main-img" 
-           alt="{{ $producto->nombre }}">
-      <p class="text-muted small mt-2 mb-3">*Imágenes referenciales*</p>
+    {{-- Galería izquierda --}}
+    <div class="col-lg-6 d-flex flex-column align-items-center">
+      {{-- Imagen principal --}}
+      <div class="mb-3 text-center">
+        <img
+          id="mainImage"
+          src="{{ $imgs->isNotEmpty() ? asset($imgs[0]) : asset('images/no-image.png') }}"
+          alt="{{ $producto->nombre }}"
+          class="img-fluid rounded shadow-sm"
+          style="max-height: 480px; object-fit: contain; cursor: zoom-in;"
+          data-index="0"
+        >
+      </div>
 
-      <!-- Formas de pago -->
-      <div class="border-top pt-3">
-        <h6 class="fw-bold mb-3">
-          <i class="fa fa-credit-card me-2 text-primary"></i>Formas de Pago Disponibles
-        </h6>
-        <div class="d-flex justify-content-center align-items-center gap-4 flex-wrap">
-          <img src="{{ asset('images/BBVA.png') }}" height="35" alt="BBVA">
-          <img src="{{ asset('images/bcp.png') }}" height="35" alt="BCP">
-          <img src="{{ asset('images/Interbank.png') }}" height="35" alt="Interbank">
-          <img src="{{ asset('images/Scotiabank.png') }}" height="35" alt="Scotiabank">
-          <img src="{{ asset('images/VISA.png') }}" height="35" alt="Visa">
-        </div>
-        <p class="small text-muted mt-2 mb-0">
-          Depósito, transferencia o tarjeta de crédito/débito
-        </p>
+      {{-- Miniaturas --}}
+      <div class="d-flex flex-wrap justify-content-center gap-2">
+        @foreach ($imgs as $idx => $img)
+          <img
+            src="{{ asset($img) }}"
+            alt="Vista {{ $idx + 1 }}"
+            class="img-thumbnail"
+            style="width: 95px; height: 95px; object-fit: cover; cursor: pointer;"
+            data-index="{{ $idx }}"
+            onclick="
+              document.getElementById('mainImage').src=this.src;
+              document.getElementById('mainImage').dataset.index='{{ $idx }}';
+            "
+          >
+        @endforeach
+        @if($imgs->isEmpty())
+          <img src="{{ asset('images/no-image.png') }}" class="img-thumbnail" style="width:95px;height:95px;object-fit:cover;">
+        @endif
       </div>
     </div>
 
-    <!-- Detalles del producto -->
-    <div class="col-md-5">
-      <h4 class="fw-bold text-uppercase">{{ $producto->nombre }}</h4>
-      <p class="text-muted mb-2">Oferta en efectivo, transferencia o depósito</p>
+    {{-- Información del producto --}}
+    <div class="col-lg-6">
+      <h4 class="fw-bold text-uppercase mb-2">{{ $producto->nombre }}</h4>
 
-      <h5 class="text-danger fw-bold mb-3">
-        Precio Oferta: <span class="text-dark">S/ {{ number_format($producto->precio, 2) }}</span>
-      </h5>
+      <p><strong>Marca:</strong> {{ $producto->marca ?? 'No especificada' }}</p>
+      <p><strong>Modelo:</strong> {{ $producto->modelo ?? 'No disponible' }}</p>
+      <p><strong>Categoría:</strong> {{ $producto->categoria ?? 'General' }}</p>
+      <p><strong>Código:</strong> {{ $producto->sku ?? 'No disponible' }}</p>
 
-      <div class="product-info mb-3">
-        <p><strong>Marca:</strong> <span>{{ $producto->marca ?? 'No especificada' }}</span></p>
-        <p><strong>Modelo:</strong> <span>{{ $producto->modelo ?? 'No disponible' }}</span></p>
-        <p><strong>Categoría:</strong> <span>{{ $producto->categoria ?? 'General' }}</span></p>
-        <p><strong>Código:</strong> <span>{{ $producto->sku }}</span></p>
-      </div>
+      @if (($producto->oferta ?? 0) > 0)
+        <p class="text-danger fw-bold fs-5 mb-3">Precio Oferta: S/ {{ number_format($producto->oferta, 2) }}</p>
+      @else
+        <p class="text-danger fw-bold fs-5 mb-3">Precio: S/ {{ number_format($producto->precio, 2) }}</p>
+      @endif
 
-      <!-- Botones -->
-      <div class="d-flex gap-2 mb-4">
-        <form action="{{ route('cart.add', $producto->id) }}" method="POST">
-          @csrf
-          <button type="submit" class="btn btn-warning btn-sm px-4 fw-bold">
-            <i class="fa fa-cart-plus me-1"></i> Añadir al Carrito
-          </button>
-        </form>
-        <a href="{{ route('productos.index') }}" class="btn btn-outline-dark btn-sm px-4">
+      <div class="d-flex gap-2">
+        <form action="{{ route('cart.add', $producto->id) }}" method="POST" class="d-inline">
+  @csrf
+  <button type="submit" class="btn btn-warning fw-semibold">
+    <i class="fa fa-cart-plus me-1"></i> Añadir al Carrito
+  </button>
+</form>
+
+        <a href="{{ route('productos.index') }}" class="btn btn-outline-secondary">
           <i class="fa fa-arrow-left me-1"></i> Volver al Catálogo
         </a>
       </div>
     </div>
   </div>
-
-  <!-- Tabs de descripción -->
-  <div class="mt-5 border-top pt-4">
-    <ul class="nav nav-tabs justify-content-center mb-3" id="productTab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="descripcion-tab" data-bs-toggle="tab" data-bs-target="#descripcion" type="button" role="tab">Descripción</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="ficha-tab" data-bs-toggle="tab" data-bs-target="#ficha" type="button" role="tab">Ficha Técnica</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="garantia-tab" data-bs-toggle="tab" data-bs-target="#garantia" type="button" role="tab">Garantías</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="contacto-tab" data-bs-toggle="tab" data-bs-target="#contacto" type="button" role="tab">Contáctanos</button>
-      </li>
-    </ul>
-
-    <div class="tab-content text-center" id="productTabContent">
-      <div class="tab-pane fade show active" id="descripcion" role="tabpanel">
-        <p>{{ $producto->descripcion ?? 'Sin descripción disponible para este producto.' }}</p>
-      </div>
-      <div class="tab-pane fade" id="ficha" role="tabpanel">
-        <p>Detalles técnicos próximamente...</p>
-      </div>
-      <div class="tab-pane fade" id="garantia" role="tabpanel">
-        <p>Todos nuestros productos cuentan con garantía del fabricante.</p>
-      </div>
-      <div class="tab-pane fade" id="contacto" role="tabpanel">
-        <p>¿Tienes dudas? Contáctanos para más información sobre este producto.</p>
-      </div>
-    </div>
-  </div>
 </div>
 
-<!-- Lightbox -->
-<div id="lightbox" class="lightbox">
-  <span class="close-lightbox">&times;</span>
-  <img class="lightbox-content" id="lightbox-img">
+{{-- ================= LIGHTBOX ================= --}}
+<div id="lb-overlay" aria-hidden="true">
+  <span id="lb-close" aria-label="Cerrar">&times;</span>
+  <img id="lb-img" alt="Vista ampliada">
+  <button id="lb-prev" aria-label="Anterior">&#10094;</button>
+  <button id="lb-next" aria-label="Siguiente">&#10095;</button>
 </div>
-@endsection
 
-@push('styles')
 <style>
-.product-info p {
-  margin-bottom: 4px;
-  font-size: 0.95rem;
-}
-.product-info strong {
-  color: #111;
-  width: 120px;
-  display: inline-block;
-}
-.btn-sm {
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-.btn-warning.btn-sm {
-  background-color: #ffcc00;
-  border: none;
-  color: #000;
-}
-.btn-warning.btn-sm:hover {
-  background-color: #e6b800;
-}
-.btn-outline-dark.btn-sm:hover {
-  background-color: #111;
-  color: #fff;
-}
-.nav-tabs .nav-link {
-  color: #333;
-  font-weight: 500;
-  border: none;
-  transition: all 0.2s ease;
-}
-.nav-tabs .nav-link.active {
-  color: #ff6600;
-  border-bottom: 3px solid #ff6600;
-}
-.nav-tabs .nav-link:hover {
-  color: #ff6600;
-}
-.img-thumbnail {
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-.img-thumbnail:hover {
-  transform: scale(1.05);
-}
-.main-img {
-  transition: opacity 0.3s ease;
-}
+  #lb-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  #lb-overlay.show { display: flex; }
 
-/* LIGHTBOX */
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 1050;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
-}
-.lightbox-content {
-  max-width: 80%;
-  max-height: 80%;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255,255,255,0.2);
-}
-.close-lightbox {
-  position: absolute;
-  top: 30px;
-  right: 50px;
-  color: white;
-  font-size: 40px;
-  cursor: pointer;
-}
-.close-lightbox:hover {
-  color: #ff6600;
-}
+  #lb-img {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 8px;
+    object-fit: contain;
+    box-shadow: 0 0 30px rgba(255,255,255,0.3);
+  }
+
+  #lb-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+  }
+
+  #lb-prev, #lb-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 48px;
+    cursor: pointer;
+    user-select: none;
+  }
+  #lb-prev { left: 40px; }
+  #lb-next { right: 40px; }
+  #lb-prev:hover, #lb-next:hover, #lb-close:hover { color: #00b4ff; }
 </style>
-@endpush
 
-@push('scripts')
 <script>
-// Cambiar imagen principal
-document.querySelectorAll('.thumb-img').forEach(img => {
-  img.addEventListener('click', function() {
+  (function() {
+    const gallery = [
+      @foreach($imgs as $img)
+        "{{ asset($img) }}",
+      @endforeach
+    ];
+
     const main = document.getElementById('mainImage');
-    main.style.opacity = '0';
-    setTimeout(() => {
-      main.src = this.dataset.img;
-      main.style.opacity = '1';
-    }, 200);
-  });
-});
+    const overlay = document.getElementById('lb-overlay');
+    const lbImg = document.getElementById('lb-img');
+    const prev = document.getElementById('lb-prev');
+    const next = document.getElementById('lb-next');
+    const close = document.getElementById('lb-close');
 
-// Lightbox
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const closeBtn = document.querySelector('.close-lightbox');
+    let currentIndex = 0;
 
-document.getElementById('mainImage').addEventListener('click', function() {
-  lightbox.style.display = 'flex';
-  lightboxImg.src = this.src;
-});
+    function openLightbox(i) {
+      currentIndex = i;
+      lbImg.src = gallery[i];
+      overlay.classList.add('show');
+    }
 
-closeBtn.addEventListener('click', () => {
-  lightbox.style.display = 'none';
-});
+    function closeLightbox() {
+      overlay.classList.remove('show');
+    }
 
-lightbox.addEventListener('click', (e) => {
-  if (e.target === lightbox) lightbox.style.display = 'none';
-});
+    function showNext() {
+      currentIndex = (currentIndex + 1) % gallery.length;
+      lbImg.src = gallery[currentIndex];
+    }
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') lightbox.style.display = 'none';
-});
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
+      lbImg.src = gallery[currentIndex];
+    }
+
+    // Eventos
+    main.addEventListener('click', () => {
+      const idx = parseInt(main.dataset.index || '0', 10);
+      openLightbox(idx);
+    });
+
+    close.addEventListener('click', closeLightbox);
+    prev.addEventListener('click', showPrev);
+    next.addEventListener('click', showNext);
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (!overlay.classList.contains('show')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+    });
+  })();
 </script>
-@endpush
+@endsection
